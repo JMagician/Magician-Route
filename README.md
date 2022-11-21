@@ -83,6 +83,6 @@ public class DemoRoute implements MagicianInitRoute {
 
 ```java
 Magician.createHttp()
-                .scan("handler和controller所在的包名")
+                .scan("Packages to be scanned")
                 .bind(8080);
 ```
