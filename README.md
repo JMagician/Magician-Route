@@ -1,12 +1,12 @@
 <h1> 
     <a href="https://magician-io.com">Magician-Route</a> ·
     <img src="https://img.shields.io/badge/licenes-MIT-brightgreen.svg"/>
-    <img src="https://img.shields.io/badge/jdk-11+-brightgreen.svg"/>
+    <img src="https://img.shields.io/badge/jdk-8+-brightgreen.svg"/>
     <img src="https://img.shields.io/badge/maven-3.5.4+-brightgreen.svg"/>
     <img src="https://img.shields.io/badge/release-master-brightgreen.svg"/>
 </h1>
 
-Magician-Web is the official web component of Magician, which can easily manage Controllers, support interceptors, session management, annotated parameter validation, entity class receiving parameters, etc.
+Magician-Route is the official web component of Magician, it is developed from Magician-Web, mainly by removing the reflection inside and sacrificing a little ease of use to make the performance higher.
 
 ## Documentation
 
