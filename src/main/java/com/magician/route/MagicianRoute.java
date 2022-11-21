@@ -22,6 +22,7 @@ public class MagicianRoute {
 
     /**
      * Forward all the requests from Magician to this method to enjoy all the features of Magician-Route
+     *
      * @param request
      * @throws Exception
      */
@@ -33,10 +34,11 @@ public class MagicianRoute {
 
     /**
      * Load the required resources, triggered only when the first request comes in
+     *
      * @throws Exception
      */
     private static void load() throws Exception {
-        if(first == false){
+        if (first == false) {
             return;
         }
 
@@ -45,25 +47,25 @@ public class MagicianRoute {
 
         /* Trigger Add route and add interceptor methods */
         Set<String> scanClassList = MagicianCacheManager.getScanClassList();
-        for(String className : scanClassList){
+        for (String className : scanClassList) {
             Class<?> cls = Class.forName(className);
 
             Route clsRoute = cls.getAnnotation(Route.class);
             Interceptor interceptor = cls.getAnnotation(Interceptor.class);
-            if(clsRoute == null && interceptor == null){
+            if (clsRoute == null && interceptor == null) {
                 continue;
             }
-            if(clsRoute != null && interceptor != null){
-                throw new Exception("");
+            if (clsRoute != null && interceptor != null) {
+                throw new Exception("It is not possible to add both Route and Interceptor annotations, className:[" + className + "]");
             }
 
-            if(clsRoute != null){
-                MagicianInitRoute magicianInitRoute = (MagicianInitRoute)cls.getDeclaredConstructor().newInstance();
+            if (clsRoute != null) {
+                MagicianInitRoute magicianInitRoute = (MagicianInitRoute) cls.getDeclaredConstructor().newInstance();
                 magicianInitRoute.initRoute(magicianRouteCreate);
             }
 
-            if(interceptor != null){
-                MagicianInitInterceptor magicianInitInterceptor = (MagicianInitInterceptor)cls.getDeclaredConstructor().newInstance();
+            if (interceptor != null) {
+                MagicianInitInterceptor magicianInitInterceptor = (MagicianInitInterceptor) cls.getDeclaredConstructor().newInstance();
                 magicianInitInterceptor.initInterceptor(magicianInterceptorCreate);
             }
         }
